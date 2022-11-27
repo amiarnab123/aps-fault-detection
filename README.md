@@ -13,3 +13,5 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+
+### Step 3 - Dump the data to mongodb database
