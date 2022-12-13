@@ -18,7 +18,7 @@ sensor/components/model_evaluation.py
 sensor/components/model_pusher.py
 sensor/components/model_trainer.py
 sensor/entity/__init__.py
-sensor/entity/aritfact_entity.py
+sensor/entity/artifact_entity.py
 sensor/entity/config_entity.py
 sensor/pipeline/__init__.py
 sensor/pipeline/training_pipeline.py
