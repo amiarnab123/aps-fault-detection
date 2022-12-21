@@ -4,8 +4,8 @@ from sensor.exception import SensorException
 from sensor.config import mongo_client
 import os,sys
 import yaml
-import dill
 import numpy as np
+import dill
 
 def get_collection_as_dataframe(database_name:str,collection_name:str)->pd.DataFrame:
     """
@@ -28,7 +28,7 @@ def get_collection_as_dataframe(database_name:str,collection_name:str)->pd.DataF
         return df
     except Exception as e:
         raise SensorException(e, sys)
-
+    
 
 def write_yaml_file(file_path,data:dict):
     try:
@@ -37,7 +37,7 @@ def write_yaml_file(file_path,data:dict):
         with open(file_path,"w") as file_writer:
             yaml.dump(data,file_writer)
     except Exception as e:
-        SensorException(e, sys)
+        raise SensorException(e, sys)
 
 def convert_columns_float(df:pd.DataFrame,exclude_columns:list)->pd.DataFrame:
     try:
@@ -48,7 +48,8 @@ def convert_columns_float(df:pd.DataFrame,exclude_columns:list)->pd.DataFrame:
     except Exception as e:
         raise e
 
-def save_object(file_path: str, obj: object) -> None:          ## serialization of object
+
+def save_object(file_path: str, obj: object) -> None:
     try:
         logging.info("Entered the save_object method of utils")
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -59,7 +60,7 @@ def save_object(file_path: str, obj: object) -> None:          ## serialization 
         raise SensorException(e, sys) from e
 
 
-def load_object(file_path: str, ) -> object:                   ## Deserilization of object
+def load_object(file_path: str, ) -> object:
     try:
         if not os.path.exists(file_path):
             raise Exception(f"The file: {file_path} is not exists")
